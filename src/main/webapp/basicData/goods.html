@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/icon.css">
     <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/src/jquery.form.js"></script>
     <script type="text/javascript" src="/static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/goods.css"/>
     <script type="text/javascript">
 
         var url;
@@ -32,6 +34,110 @@
                     });
                 }
             });
+
+            //图片上传预览功能
+            var userAgent = navigator.userAgent; //用于判断浏览器类型
+
+            // $("#imageDiv").click(function() {
+            //     $(".file").change()
+            // })
+
+            $(".file").change(function() {
+                //获取选择图片的对象
+                var docObj = $(this)[0];
+                var picDiv = $(this).parents(".picDiv");
+                //得到所有的图片文件
+                var fileList = docObj.files;
+                var imageDiv = document.getElementById("imageDiv");
+                if (imageDiv) {
+                    $("#imageDiv").remove();
+                }
+                $("#djsc").text("重新上传");
+                // 单个
+                for (var i = 0; i < fileList.length; i++) {
+                    //动态添加html元素
+                    var picHtml = "<div id='imageDiv' class='imageDiv' > <img id='img' /> </div>";
+                    // console.log(picHtml);
+                    picDiv.prepend(picHtml);
+                    //获取图片imgi的对象
+                    var imgObjPreview = document.getElementById("img");
+                    if (fileList && fileList[i]) {
+                        //图片属性
+                        imgObjPreview.style.display = 'block';
+                        imgObjPreview.style.width = '150px';
+                        imgObjPreview.style.height = '100px';
+                        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+                        //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要以下方式
+                        if (userAgent.indexOf('MSIE') == -1) {
+                            //IE以外浏览器
+                            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]); //获取上传图片文件的物理路径;
+                            // console.log(imgObjPreview.src);
+                            // var msgHtml = '<input type="file" id="fileInput" multiple/>';
+                        } else {
+                            //IE浏览器
+                            if (docObj.value.indexOf(",") != -1) {
+                                var srcArr = docObj.value.split(",");
+                                imgObjPreview.src = srcArr[0];
+                            } else {
+                                imgObjPreview.src = docObj.value;
+                            }
+                        }
+                    }
+                }
+
+                //循环遍历
+    /*       多选     for (var i = 0; i < fileList.length; i++) {
+                    //动态添加html元素
+                    var picHtml = "<div class='imageDiv' > <img id='img" + fileList[i].name + "' /> <div class='cover'><i class='delbtn'>删除</i></div></div>";
+                    // console.log(picHtml);
+                    picDiv.prepend(picHtml);
+                    //获取图片imgi的对象
+                    var imgObjPreview = document.getElementById("img" + fileList[i].name);
+                    if (fileList && fileList[i]) {
+                        //图片属性
+                        imgObjPreview.style.display = 'block';
+                        // imgObjPreview.style.width = '100px';
+                        imgObjPreview.style.height = '100px';
+                        //imgObjPreview.src = docObj.files[0].getAsDataURL();
+                        //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要以下方式
+                        if (userAgent.indexOf('MSIE') == -1) {
+                            //IE以外浏览器
+                            imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]); //获取上传图片文件的物理路径;
+                            // console.log(imgObjPreview.src);
+                            // var msgHtml = '<input type="file" id="fileInput" multiple/>';
+                        } else {
+                            //IE浏览器
+                            if (docObj.value.indexOf(",") != -1) {
+                                var srcArr = docObj.value.split(",");
+                                imgObjPreview.src = srcArr[i];
+                            } else {
+                                imgObjPreview.src = docObj.value;
+                            }
+                        }
+                    }
+                }
+*/
+                /*删除功能*/
+                // $(".delbtn").click(function() {
+                //     var _this = $(this);
+                //     _this.parents(".imageDiv").remove();
+                // });
+            });
+            // $("#saveBtn").click(function(){
+            //     alert(1)
+            //     var options = {
+            //         url:"/admin/goods/uploadImage",
+            //         // beforeSubmit : function(){
+            //         //     loadingIndex = layer.msg('数据正在保存中', {icon: 6});
+            //         //     return true ; //必须返回true,否则,请求终止.
+            //         // },
+            //         success : function(result){
+            //             alert(result)
+            //         }
+            //     };
+            //    // $("#advertForm").ajaxSubmit(options); //异步提交
+            //    // return ;
+            // });
 
         });
 
@@ -391,9 +497,9 @@
     <a href="javascript:closeGoodsTypeDialog()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 </div>
 
-<div id="dlg2" class="easyui-dialog" style="width: 500px;height: 400px;padding: 10px 20px"
+<div id="dlg2" class="easyui-dialog" style="width: 600px;height: 600px;padding: 10px 20px"
      closed="true" buttons="#dlg-buttons2" data-options="onClose:function(){resetValue()}">
-    <form id="fm2" method="post">
+    <form id="fm2" method="post" enctype="multipart/form-data">
         <table>
             <tr>
                 <td>所属类别：</td>
@@ -466,6 +572,31 @@
                 <td valign="top">备注：</td>
                 <td colspan="4">
                     <textarea rows="5" cols="46" id="remarks" name="remarks"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">图片：</td>
+                <td colspan="4">
+<!--                    <div class="form-group">-->
+<!--                        <input type="file" class="form-control" id="advpic" name="advertImgTemp" placeholder="图片">-->
+<!--                    </div>-->
+
+                    <div id="Pic_pass">
+<!--                        <p><span style="color: red">注：每张照片大写不可超过4M，且最多可以传十张</span></p>-->
+                        <div class="picDiv">
+                            <div class="addImages">
+                                <!--multiple属性可选择多个图片上传-->
+                                <input type="file" class="file" id="fileInput" multiple="" name="file"
+                                       accept="image/png, image/jpeg, image/gif, image/jpg">
+                                <div class="text-detail">
+                                    <span>+</span>
+                                    <p id="djsc">点击上传</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="msg" style="display: none;"></div>
                 </td>
             </tr>
         </table>

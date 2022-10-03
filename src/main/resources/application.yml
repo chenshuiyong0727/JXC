@@ -1,10 +1,11 @@
 server:
-  port: 80
+  port: 8013
+file-save-path: G://dw//img//
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
-    password: 123456
+    password: csy@123
     url: jdbc:mysql://localhost:3306/db_jxc?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8
   jpa:
     hibernate:

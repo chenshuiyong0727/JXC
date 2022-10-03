@@ -32,7 +32,7 @@ CREATE TABLE `t_customer` (
 
 /*Data for the table `t_customer` */
 
-insert  into `t_customer`(`id`,`address`,`contact`,`name`,`number`,`remarks`) values 
+insert  into `t_customer`(`id`,`address`,`contact`,`name`,`number`,`remarks`) values
 (1,'福州新弯曲5号','小李子','福州艾玛超市','2132-23213421',''),
 (2,'天津兴达大街888号','小张','天津王大连锁酒店','23432222311','优质客户'),
 (3,'大凉山妥洛村','小爱','大凉山希望小学','233243211','照顾客户2'),
@@ -61,7 +61,7 @@ CREATE TABLE `t_customer_return_list` (
 
 /*Data for the table `t_customer_return_list` */
 
-insert  into `t_customer_return_list`(`id`,`amount_paid`,`amount_payable`,`customer_return_date`,`customer_return_number`,`remarks`,`state`,`customer_id`,`user_id`) values 
+insert  into `t_customer_return_list`(`id`,`amount_paid`,`amount_payable`,`customer_return_date`,`customer_return_number`,`remarks`,`state`,`customer_id`,`user_id`) values
 (10,17,17,'2020-10-14','XT202010150001','',1,1,1),
 (11,1250,1250,'2020-10-15','XT202010150001','',1,1,1);
 
@@ -90,7 +90,7 @@ CREATE TABLE `t_customer_return_list_goods` (
 
 /*Data for the table `t_customer_return_list_goods` */
 
-insert  into `t_customer_return_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`customer_return_list_id`,`type_id`) values 
+insert  into `t_customer_return_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`customer_return_list_id`,`type_id`) values
 (13,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',2,8.5,17,'瓶',10,10),
 (14,'0004',12,'2斤装','新疆红枣',50,25,1250,'袋',11,10);
 
@@ -111,7 +111,7 @@ CREATE TABLE `t_damage_list` (
 
 /*Data for the table `t_damage_list` */
 
-insert  into `t_damage_list`(`id`,`damage_date`,`damage_number`,`remarks`,`user_id`) values 
+insert  into `t_damage_list`(`id`,`damage_date`,`damage_number`,`remarks`,`user_id`) values
 (1,'2020-01-15','JH202001150001','受潮',1),
 (2,'2020-01-15','JH202001150002','已过期',1),
 (3,'2020-10-15','JH202010150001','已过期',1);
@@ -141,7 +141,7 @@ CREATE TABLE `t_damage_list_goods` (
 
 /*Data for the table `t_damage_list_goods` */
 
-insert  into `t_damage_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`damage_list_id`,`type_id`) values 
+insert  into `t_damage_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`damage_list_id`,`type_id`) values
 (1,'0002',2,'Note8','华为荣耀Note8',1,2220,2220,'台',1,16),
 (2,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',10,8.5,85,'瓶',2,10),
 (3,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',5,8.5,42.5,'瓶',3,10);
@@ -173,7 +173,7 @@ CREATE TABLE `t_goods` (
 
 /*Data for the table `t_goods` */
 
-insert  into `t_goods`(`id`,`code`,`inventory_quantity`,`last_purchasing_price`,`min_num`,`model`,`name`,`producer`,`purchasing_price`,`remarks`,`selling_price`,`state`,`unit`,`type_id`,`code_or_name`) values 
+insert  into `t_goods`(`id`,`code`,`inventory_quantity`,`last_purchasing_price`,`min_num`,`model`,`name`,`producer`,`purchasing_price`,`remarks`,`selling_price`,`state`,`unit`,`type_id`,`code_or_name`) values
 (1,'0001',59,8.5,1000,'红色装','陶华碧老干妈香辣脆油辣椒','贵州省贵阳南明老干妈风味食品有限公司',7.09,'好卖',8.5,2,'瓶',10,NULL),
 (2,'0002',100,2220,400,'Note8','华为荣耀Note8','华为计算机系统有限公司',2029.68,'热销',2200,2,'台',16,NULL),
 (11,'0003',1590,38,400,'500g装','野生东北黑木耳','辉南县博康土特产有限公司',23,'够黑2',38,2,'袋',11,NULL),
@@ -228,7 +228,7 @@ CREATE TABLE `t_goods_copy` (
 
 /*Data for the table `t_goods_copy` */
 
-insert  into `t_goods_copy`(`id`,`code`,`inventory_quantity`,`last_purchasing_price`,`min_num`,`model`,`name`,`producer`,`purchasing_price`,`remarks`,`selling_price`,`state`,`unit`,`type_id`,`code_or_name`) values 
+insert  into `t_goods_copy`(`id`,`code`,`inventory_quantity`,`last_purchasing_price`,`min_num`,`model`,`name`,`producer`,`purchasing_price`,`remarks`,`selling_price`,`state`,`unit`,`type_id`,`code_or_name`) values
 (1,'0001',90,8.5,1000,'红色装','陶华碧老干妈香辣脆油辣椒','贵州省贵阳南明老干妈风味食品有限公司',6.59,'好卖',8.5,2,'瓶',10,NULL),
 (2,'0002',100,2220,400,'Note8','华为荣耀Note8','华为计算机系统有限公司',2029.68,'热销',2200,2,'台',16,NULL),
 (11,'0003',2000,38,400,'500g装','野生东北黑木耳','辉南县博康土特产有限公司',23,'够黑2',38,2,'袋',11,NULL),
@@ -272,7 +272,7 @@ CREATE TABLE `t_goodstype` (
 
 /*Data for the table `t_goodstype` */
 
-insert  into `t_goodstype`(`id`,`icon`,`name`,`p_id`,`state`) values 
+insert  into `t_goodstype`(`id`,`icon`,`name`,`p_id`,`state`) values
 (1,'icon-folderOpen','所有类别',-1,1),
 (2,'icon-folder','服饰',1,1),
 (3,'icon-folder','食品',1,1),
@@ -303,7 +303,7 @@ CREATE TABLE `t_goodsunit` (
 
 /*Data for the table `t_goodsunit` */
 
-insert  into `t_goodsunit`(`id`,`name`) values 
+insert  into `t_goodsunit`(`id`,`name`) values
 (1,'个'),
 (2,'袋'),
 (3,'盒'),
@@ -331,7 +331,7 @@ CREATE TABLE `t_log` (
 
 /*Data for the table `t_log` */
 
-insert  into `t_log`(`id`,`content`,`time`,`type`,`user_id`) values 
+insert  into `t_log`(`id`,`content`,`time`,`type`,`user_id`) values
 (1,'用户登录','2020-01-11 04:08:37','登录操作',1),
 (2,'查询角色信息','2020-01-11 04:09:17','查询操作',1),
 (3,'查询角色信息','2020-01-11 04:09:17','查询操作',1),
@@ -5064,7 +5064,7 @@ CREATE TABLE `t_menu` (
 
 /*Data for the table `t_menu` */
 
-insert  into `t_menu`(`id`,`icon`,`name`,`p_id`,`state`,`url`) values 
+insert  into `t_menu`(`id`,`icon`,`name`,`p_id`,`state`,`url`) values
 (1,'menu-plugin','系统菜单',-1,1,NULL),
 (10,'menu-1','进货管理',1,1,NULL),
 (20,'menu-2','销售管理',1,1,NULL),
@@ -5120,7 +5120,7 @@ CREATE TABLE `t_overflow_list` (
 
 /*Data for the table `t_overflow_list` */
 
-insert  into `t_overflow_list`(`id`,`overflow_date`,`overflow_number`,`remarks`,`user_id`) values 
+insert  into `t_overflow_list`(`id`,`overflow_date`,`overflow_number`,`remarks`,`user_id`) values
 (1,'2020-01-15','JH202001150001','',1),
 (2,'2020-01-15','JH202001150002','',1),
 (3,'2020-10-15','JH202010150001','',1);
@@ -5150,7 +5150,7 @@ CREATE TABLE `t_overflow_list_goods` (
 
 /*Data for the table `t_overflow_list_goods` */
 
-insert  into `t_overflow_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`overflow_list_id`,`type_id`) values 
+insert  into `t_overflow_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`overflow_list_id`,`type_id`) values
 (1,'0002',2,'Note8','华为荣耀Note8',1,2220,2220,'台',1,16),
 (2,'0004',12,'2斤装','新疆红枣',100,25,2500,'袋',2,10),
 (3,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',2,8.5,17,'瓶',3,10);
@@ -5178,7 +5178,7 @@ CREATE TABLE `t_purchase_list` (
 
 /*Data for the table `t_purchase_list` */
 
-insert  into `t_purchase_list`(`id`,`amount_paid`,`amount_payable`,`purchase_date`,`purchase_number`,`remarks`,`state`,`supplier_id`,`user_id`) values 
+insert  into `t_purchase_list`(`id`,`amount_paid`,`amount_payable`,`purchase_date`,`purchase_number`,`remarks`,`state`,`supplier_id`,`user_id`) values
 (26,170,170,'2020-10-14','JH202010150001','',1,1,1),
 (27,93.5,93.5,'2020-10-15','JH202010150001','',1,1,1);
 
@@ -5207,7 +5207,7 @@ CREATE TABLE `t_purchase_list_goods` (
 
 /*Data for the table `t_purchase_list_goods` */
 
-insert  into `t_purchase_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`purchase_list_id`,`type_id`) values 
+insert  into `t_purchase_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`purchase_list_id`,`type_id`) values
 (45,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',20,8.5,170,'瓶',26,10),
 (46,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',11,8.5,93.5,'瓶',27,10);
 
@@ -5237,7 +5237,7 @@ CREATE TABLE `t_return_list` (
 
 /*Data for the table `t_return_list` */
 
-insert  into `t_return_list`(`id`,`amount_paid`,`amount_payable`,`remarks`,`return_date`,`return_number`,`state`,`supplier_id`,`user_id`,`customer_id`) values 
+insert  into `t_return_list`(`id`,`amount_paid`,`amount_payable`,`remarks`,`return_date`,`return_number`,`state`,`supplier_id`,`user_id`,`customer_id`) values
 (3,93.5,93.5,'已过期','2020-10-14','TH202010150001',1,1,1,NULL),
 (4,380,380,'','2020-10-15','TH202010150001',1,1,1,NULL);
 
@@ -5266,7 +5266,7 @@ CREATE TABLE `t_return_list_goods` (
 
 /*Data for the table `t_return_list_goods` */
 
-insert  into `t_return_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`return_list_id`,`type_id`) values 
+insert  into `t_return_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`return_list_id`,`type_id`) values
 (3,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',11,8.5,93.5,'瓶',3,10),
 (4,'0003',11,'500g装','野生东北黑木耳',10,38,380,'袋',4,11);
 
@@ -5283,7 +5283,7 @@ CREATE TABLE `t_role` (
 
 /*Data for the table `t_role` */
 
-insert  into `t_role`(`id`,`name`,`remarks`) values 
+insert  into `t_role`(`id`,`name`,`remarks`) values
 (1,'系统管理员','管理员 最高权限'),
 (2,'主管','主管'),
 (4,'采购员','采购员'),
@@ -5308,7 +5308,7 @@ CREATE TABLE `t_role_menu` (
 
 /*Data for the table `t_role_menu` */
 
-insert  into `t_role_menu`(`id`,`menu_id`,`role_id`) values 
+insert  into `t_role_menu`(`id`,`menu_id`,`role_id`) values
 (2,1,1),
 (3,10,1),
 (4,20,1),
@@ -5411,7 +5411,7 @@ CREATE TABLE `t_sale_list` (
 
 /*Data for the table `t_sale_list` */
 
-insert  into `t_sale_list`(`id`,`amount_paid`,`amount_payable`,`remarks`,`sale_date`,`sale_number`,`state`,`customer_id`,`user_id`) values 
+insert  into `t_sale_list`(`id`,`amount_paid`,`amount_payable`,`remarks`,`sale_date`,`sale_number`,`state`,`customer_id`,`user_id`) values
 (12,8100,8100,'','2020-10-14','XS202010150001',1,1,1),
 (13,425,425,'','2020-10-15','XS202010150001',1,1,1);
 
@@ -5440,7 +5440,7 @@ CREATE TABLE `t_sale_list_goods` (
 
 /*Data for the table `t_sale_list_goods` */
 
-insert  into `t_sale_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`sale_list_id`,`type_id`) values 
+insert  into `t_sale_list_goods`(`id`,`code`,`goods_id`,`model`,`name`,`num`,`price`,`total`,`unit`,`sale_list_id`,`type_id`) values
 (16,'0003',11,'500g装','野生东北黑木耳',200,38,7600,'袋',12,11),
 (17,'0004',12,'2斤装','新疆红枣',20,25,500,'袋',12,10),
 (18,'0001',1,'红色装','陶华碧老干妈香辣脆油辣椒',50,8.5,425,'瓶',13,10);
@@ -5461,7 +5461,7 @@ CREATE TABLE `t_supplier` (
 
 /*Data for the table `t_supplier` */
 
-insert  into `t_supplier`(`id`,`address`,`contact`,`name`,`number`,`remarks`) values 
+insert  into `t_supplier`(`id`,`address`,`contact`,`name`,`number`,`remarks`) values
 (1,'上海市金山区张堰镇松金公路2072号6607室','小张','上海福桂食品有限公司','0773-7217175','失信供应商'),
 (2,'安徽省合肥市肥西县桃花工业园合派路','小王','安徽麦堡食品工业有限公司','0773-7217275',NULL),
 (3,'晋江市罗山后林西区41号','小李','福建省晋江市罗山惠康食品有限公司','1273-1217175','优质供应商'),
@@ -5492,7 +5492,7 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
-insert  into `t_user`(`id`,`password`,`remarks`,`true_name`,`user_name`) values 
+insert  into `t_user`(`id`,`password`,`remarks`,`true_name`,`user_name`) values
 (1,'admin','管理员','乐道','admin'),
 (2,'123','主管','王大锤','jack'),
 (3,'123','销售经理','玛丽','marry'),
@@ -5516,7 +5516,7 @@ CREATE TABLE `t_user_role` (
 
 /*Data for the table `t_user_role` */
 
-insert  into `t_user_role`(`id`,`role_id`,`user_id`) values 
+insert  into `t_user_role`(`id`,`role_id`,`user_id`) values
 (1,1,1),
 (19,2,2),
 (20,4,2),
