@@ -2,11 +2,13 @@ package com.ledao.controller.admin;
 
 import com.ledao.entity.Goods;
 import com.ledao.entity.Log;
+import com.ledao.model.ResponseMsg;
 import com.ledao.service.CustomerReturnListGoodsService;
 import com.ledao.service.GoodsService;
 import com.ledao.service.LogService;
 import com.ledao.service.SaleListGoodsService;
 import com.ledao.util.FileUtils;
+import com.ledao.util.HttpClientUtil;
 import com.ledao.util.StringUtil;
 import java.io.File;
 import java.io.IOException;
@@ -175,26 +177,7 @@ public class GoodsAdminController {
       throws Exception {
     MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
     MultipartFile mfile = mreq.getFile("file");//advertImgTemp是input file的name的值
-    Map<String, Object> resultMap = this.uploadImage(mfile,req);
-//    MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
-//    MultipartFile mfile = mreq.getFile("advertImgTemp");//advertImgTemp是input file的name的值
-////    String name = mfile.getOriginalFilename();//上传文件的名称
-////    String extname = name.substring(name.lastIndexOf(".")); //取得.jpg
-////    String imgPath = UUID.randomUUID().toString() + extname; //重新命,名图片名字
-////    ServletContext servletContext = session.getServletContext();
-//////realpath D:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps\crowdfunding-main\advert
-////    String realpath = servletContext.getRealPath("/advert");
-//////path D:\Program Files\Apache Software Foundation\Tomcat 8.0\webapps\crowdfunding-main\advert\img\2cafef49-3827-4afe-9ff6-b89b0f931575.jpg
-////    String path = realpath + "\\img\\" + imgPath;
-////    mfile.transferTo(new File(path)); //文件上传
-//
-//    String path = "G:/dw/img";
-//    try {
-//      String Imagepath = path + FileUtils.uploadImage(path, mfile);
-//      System.out.println(Imagepath);
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
+    Map<String, Object> resultMap = this.uploadImage(mfile, req);
     if (goods.getId() != null) {
       goods.setInventoryQuantity(goodsService.findById(goods.getId()).getInventoryQuantity());
       logService.save(new Log(Log.UPDATE_ACTION, "更新商品信息" + goods));
@@ -202,6 +185,12 @@ public class GoodsAdminController {
       logService.save(new Log(Log.ADD_ACTION, "添加商品信息" + goods));
       goods.setInventoryQuantity(0);
       goods.setLastPurchasingPrice(goods.getPurchasingPrice());
+    }
+    if ("success".equals(resultMap.get("status").toString()) && resultMap.get("url") != null) {
+      goods.setImgUrl(resultMap.get("url").toString());
+    }
+    if (StringUtil.isNotEmpty(goods.getName())) {
+      goods.setName(goods.getModel());
     }
     goodsService.save(goods);
     resultMap.put("success", true);
@@ -213,6 +202,11 @@ public class GoodsAdminController {
     //获取文件的名字
     String originName = file.getOriginalFilename();
     System.out.println("originName:" + originName);
+    if (StringUtil.isEmpty(originName)) {
+      result.put("status", "error");
+      result.put("msg", "图片为空");
+      return result;
+    }
     //判断文件类型
 //    if (!originName.endsWith(".jpg")) {
 //      result.put("status", "error");
@@ -320,6 +314,15 @@ public class GoodsAdminController {
       e.printStackTrace();
     }
     return resultMap;
+  }
+
+  @RequestMapping("/getImgUrl")
+  public ResponseMsg getImgUrl(String model) {
+    Map<String, Object> resultMap = new HashMap<>(16);
+    String url = HttpClientUtil.getData(model);
+    resultMap.put("success", true);
+    resultMap.put("data", url);
+    return new ResponseMsg(url);
   }
 
   @ResponseBody

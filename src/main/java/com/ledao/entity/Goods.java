@@ -1,6 +1,7 @@
 package com.ledao.entity;
 
 import javax.persistence.*;
+import lombok.Data;
 
 /**
  * 商品实体
@@ -12,6 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "t_goods")
+@Data
 public class Goods {
 
     /**
@@ -35,6 +37,10 @@ public class Goods {
      */
     @Column(length=50)
     private String model;
+    /**
+     * 图片地址
+     */
+    private String imgUrl;
     /**
      * 商品类别
      */
